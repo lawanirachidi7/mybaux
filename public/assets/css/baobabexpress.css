@@ -1,0 +1,43 @@
+@charset "UTF-8";
+/*
+Template Name: Baobab Express Baux admin
+Author: BaobabTech
+Version: 1.0.0
+Website: 
+Contact: ....
+File: Main Css File
+*/
+.bg-primary{
+  background: green;
+}
+.navbar-custom{
+  background: #fae846 !important ;
+}
+
+.fe-menu{
+  color: black;
+}
+.content-page {
+  margin-top: 0px !important;
+}
+
+/* login */
+.login {
+  background: green;
+}
+
+
+.login-card{
+  background: #fae846;
+  border-radius: 10%;
+  box-shadow: inset 0 0 5em gold, 0 0 2em rgba(255, 0, 0, 0.822);
+  /* box-shadow: 10px 5px 5px rgba(255, 0, 0, 0.37); */
+}
+
+.logo-btn{
+  background: green;
+}
+
+.lock{
+  background: green;
+}
