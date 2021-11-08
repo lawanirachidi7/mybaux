@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBaobab extends Migration
+class CreateBaobabsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBaobab extends Migration
      */
     public function up()
     {
-        Schema::create('baobab', function (Blueprint $table) {
+        Schema::create('baobabs', function (Blueprint $table) {
             $table->id();
             $table->string('raison_social');
             $table->string('rccm');
@@ -36,6 +36,6 @@ class CreateBaobab extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('baobab');
+        Schema::dropIfExists('baobabs');
     }
 }

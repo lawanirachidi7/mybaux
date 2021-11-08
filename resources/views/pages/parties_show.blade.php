@@ -29,56 +29,57 @@
                 <div class="form-group row">
                         <div class="form-group col-md-12">
                             <label for="social_reason" >Raison social</label> <span class="text-danger">*</span>
-                            <input id="raison_social" type="text" class="form-control " name="raison_social" value="{{old('raison_social')}}" required autocomplete="raison_social" autofocus>                       
+                            <input disabled  id="raison_social" type="text" class="form-control " name="raison_social" value="{{$parties->raison_social}}" required autocomplete="name" autofocus>                       
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="rccm" >RCCM</label> <span class="text-danger">*</span>
-                            <input id="rccm" type="text" class="form-control" name="rccm" value="{{old('rccm')}}" required autocomplete="rccm" >    
+                            <input disabled  id="rccm" type="text" class="form-control" name="rccm" value="{{$parties->rccm}}" required autocomplete="name" >    
                         </div>
                         <div class="form-group col-md-6">
                             <label for="ifu" >IFU</label> <span class="text-danger">*</span>
-                            <input id="ifu" type="text" class="form-control" name="ifu" value="{{old('ifu')}}" required autocomplete="ifu" >
+                            <input disabled  id="ifu" type="text" class="form-control" name="ifu" value="{{$parties->ifu}}" required autocomplete="name" >
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="siege" >Siège</label> <span class="text-danger">*</span>
-                            <input id="siege" type="text" class="form-control" name="siege" value="{{old('siege')}}" required autocomplete="siege" >
+                            <input disabled  id="siege" type="text" class="form-control" name="siege" value="{{$parties->siege}}" required autocomplete="name" >
                         </div>
                         <div class="form-group col-md-6">
                             <label for="contact" >Contact</label> <span class="text-danger">*</span>
-                            <input id="contact" type="tel" class="form-control" name="contact" value="{{old('contact')}}" required autocomplete="contact" >
+                            <input disabled  id="contact" type="text" class="form-control" name="contact" value="{{$parties->contact}}" required autocomplete="name" >
                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="capital" >Capital</label> <span class="text-danger">*</span>
-                            <input id="capital" type="number" class="form-control" name="capital" value="" required autocomplete="capital" >
+                            <input disabled  id="capital" type="text" class="form-control" name="capital" value="" required autocomplete="name" >
                         </div>
                         <div class="form-group col-md-6">
                             <label for="domaine_activite" >Domaine d'activité</label> <span class="text-danger">*</span>
-                            <input id="domaine_activite" type="text" class="form-control" name="domaine_activite" value="{{old('domaine_activite')}}" required autocomplete="domaine_activite" >
+                            <input disabled  id="domaine_activite" type="text" class="form-control" name="domaine_activite" value="{{$parties->domaine_activite}}" required autocomplete="name" >
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="email" >Email</label> <span class="text-danger">*</span>
-                            <input id="email" type="email" class="form-control" name="email" value="{{old('email')}}" required autocomplete="email" >     
+                            <input disabled  id="email" type="text" class="form-control" name="email" value="{{$parties->email}}" required autocomplete="name" >     
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="responsable" >Responsable</label> <span class="text-danger">*</span>
-                            <input id="responsable" type="text" class="form-control"  name="responsable" value="{{old('responsable')}}" required autocomplete="Responsable" >
+                            <input disabled  id="responsable" type="text" class="form-control"  name="Responsable" value="{{$parties->Responsable}}" required autocomplete="name" >
                         </div>
                         <div class="form-group col-md-6">
                             <label for="contact_responsable" >Contact du respnsable</label><span class="text-danger">*</span>
-                            <input id="contact_responsable" type="tel" class="form-control " name="contact_responsable" value="{{old('contact_responsable')}}" required autocomplete="contact_responsable" >     
+                            <input disabled  id="contact_responsable" type="text" class="form-control " name="contactsresponsable" value="{{$parties->contactsresponsable}}" required autocomplete="name" >     
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    <a href="{{route("parties.index")}}" class="btn btn-primary">Retour</a>
+                    <a class="btn btn-warning" href="{{ route("parties.edit",$parties->id) }}" ></i>Modifier</a>
                 </form>
             </div>
         </div>

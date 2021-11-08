@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -242,9 +241,9 @@
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="{{ route('baux/ajout') }}">Ajouter</a></li>
-                                    <li><a href="{{ route('baux') }}">Listes des baux</a></li>
-                                    <li><a href="{{ route('baux') }}">Baux en instance</a></li>
+                                    <li><a href="{{ route('baux.create') }}">Ajouter</a></li>
+                                    <li><a href="{{ route('baux.index') }}">Listes des baux</a></li>
+                                    <li><a href="{{ route('baux.index') }}">Baux en instance</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -254,21 +253,11 @@
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="{{ route('utilisateurs/ajout') }}">Ajouter</a></li>
-                                    <li><a href="{{ route('utilisateurs') }}">Listes des utilisateur</a></li>
+                                    <li><a href="{{ route('user.create') }}">Ajouter</a></li>
+                                    <li><a href="{{ route('user.index') }}">Listes des utilisateur</a></li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="fe-sidebar"></i>
-                                    <span> Privilèges </span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                                <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="{{ route('privileges/ajout') }}">Ajouter</a></li>
-                                    <li><a href="{{ route('privileges') }}">Listes des Privilèges</a></li>
-                                </ul>
-                            </li>
+                           
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="fe-sidebar"></i>
@@ -276,8 +265,8 @@
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="{{ route('parties/ajout') }}">Partie</a></li>
-                                    <li><a href="{{ route('parties') }}">Listes des parties</a></li>
+                                    <li><a href="{{ route('parties.create') }}">Ajouter</a></li>
+                                    <li><a href="{{ route('parties.index') }}">Listes des parties</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -287,16 +276,13 @@
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="{{ route('baobab') }}">info Baobab</a></li>
-                                    <li><a href="{{ route('setting') }}">Autres réglages</a></li>
+                                    <li><a href="{{ route('baobab.index') }}">info Baobab</a></li>
+                                    <li><a href="{{ route('settings.index') }}">Autres réglages</a></li>
                                 </ul>
                             </li>
-                
                         </ul>
-
                     </div>
                     <!-- End Sidebar -->
-
                     <div class="clearfix"></div>
 
                 </div>
@@ -313,7 +299,17 @@
 
             <div class="content-page">
                 <div class="content">
-                    
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif 
+                    @if ($message = Session::get('error'))
+                        <div class="alert alert-danger">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
+               
                     <!-- Start Content-->
                     @yield('content')
                   

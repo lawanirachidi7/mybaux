@@ -8,9 +8,7 @@
     </div>
     <form method="POST" action="{{ route('password.email') }}">
         @csrf
-
         <div class="form-group row">
-
             <div class="col-12">
                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -23,7 +21,6 @@
                 @enderror
             </div>
         </div>
-
         <div class="form-group row mb-0">
             <div class="col-12">
                 <button type="submit" class="btn btn-md btn-block btn-primary waves-effect waves-light">
@@ -32,16 +29,7 @@
             </div>
         </div>
     </form>
-
     <div class="clearfix"></div>
-
-    
 </div>
-
 </div>
 @endsection
-
-
-
-
-

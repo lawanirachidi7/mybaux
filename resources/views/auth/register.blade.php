@@ -26,9 +26,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                           
 
-                            <div class="col-md-6">
+                            <div class="col-12">
+                                <label for="email" >{{ __('E-Mail Address') }}</label>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
@@ -39,9 +40,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="privilege" class="col-md-4 col-form-label text-md-right">{{ __('Compte') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-12">
+                                <label for="privilege" class="">{{ __('Compte') }}</label>
                                 <input id="privilege" type="text" class="form-control @error('privilege') is-invalid @enderror" name="privilege" value="{{ old('privilege') }}" required autocomplete="privilege">
 
                                 @error('privilege')
@@ -52,7 +53,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="statut" class="col-md-4 col-form-label text-md-right">{{ __('Statut') }}</label>
+                            <label for="statut" class="">{{ __('Statut') }}</label>
                             <div class="col-md-6">
                                 <input id="statut" type="statut" class="form-control @error('statut') is-invalid @enderror" name="statut" value="{{ old('statut') }}" required autocomplete="statut">
                                 @error('statut')
@@ -77,14 +78,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <div class="col-12">
+                                <label for="password-confirm" class="">{{ __('Confirm Password') }}</label>
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-12 ">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>

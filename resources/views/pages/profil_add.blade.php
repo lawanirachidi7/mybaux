@@ -16,7 +16,9 @@
                 <h4 class="page-title">Création d'un bail</h4>
             </div>
         </div>
-    </div>     
+    </div>
+    
+    
     <!-- end page title -->     
 </div> <!-- end container-fluid -->
 @endsection

@@ -30,9 +30,14 @@ class HomeController extends Controller
     {
         return view('pages.lock_screen');
     } 
+    
     public function login()
     {
         return view('auth.login');
+    }
+    public function login2()
+    {
+        return view('auth.login2');
     }
 
 

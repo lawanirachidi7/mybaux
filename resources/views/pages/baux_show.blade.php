@@ -1,10 +1,4 @@
 @extends('layouts.default')
-@section('styles')
-    <link href="{!! asset('assets/libs/datatables/dataTables.bootstrap4.css') !!}" rel="stylesheet" type="text/css" />
-    <link href="{!! asset('assets/libs/datatables/buttons.bootstrap4.css') !!}" rel="stylesheet" type="text/css" />
-    <link href="{!! asset('assets/libs/datatables/responsive.bootstrap4.css') !!}" rel="stylesheet" type="text/css" />
-@endsection
-
 
 
 @section('styles')
@@ -21,8 +15,8 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Utilisateurs</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('baux.index') }}">Baux</a></li>
                         <li class="breadcrumb-item active">Création</li>
                     </ol>
                 </div>
@@ -37,52 +31,59 @@
                 <p class="sub-header">
                     Remplissez  tout les champs obligatoire.
                 </p>
-                <form class="form-horizontal" action="{{ route('baux.store') }}" method="POST">
-                    @csrf
+               
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="name" >Titre du contrat</label>
-                            <input id="name" type="text" class="form-control" name="titre_contract" value="{{ old('titre_contract') }}" required autocomplete="name" autofocus >                       
+                            <input id="name" type="text" class="form-control" name="titre_contract" value="{{  $baux->titre_contract }}" required autocomplete="name" autofocus >                       
                         </div>
                         <div class="form-group col-md-6">
                             <label for="name" >Numéro du contrat</label>
-                            <input id="name" type="number" class="form-control" name="numero_contract" value="{{ old('numero_contract') }}" required autocomplete="name" autofocus >                       
+                            <input id="name" type="number" class="form-control" name="numero_contract" value="{{  $baux->numero_contract }}" required autocomplete="name" autofocus >                       
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="name" >Partie Prenante</label>
-                            <select id="inputState" class="form-control " name="partie_prenante" value="{{ old('partie_prenante') }}" required autocomplete="privilege">
-                                @foreach ($baobab as $baobab)
-                                    <option value="{{ $baobab->id }}">{{ $baobab->raison_social}}</option>
-                                @endforeach 
-                                @foreach ($parties as $partie)
-                                    <option value="{{ $partie->id}}">{{ $partie->raison_social}}</option>
-                                @endforeach  
-                            </select>      
+                            <input id="name" type="number" class="form-control" name="" value="{{  $baux->partie_prenante }}" required autocomplete="name" autofocus >                       
+
                         </div>
                         <div class="form-group col-md-6">
                             <label for="name" >Partie adverse</label>
-                            <select id="inputState" class="form-control " name="partie_adverse" value="{{ old('partie_adverse') }}" required autocomplete="privilege">
-                                @foreach ($parties as $partie)
-                                    <option value="{{ $partie->id}}">{{ $partie->raison_social}}</option>
-                                @endforeach  
-                            </select>     
+                            <input id="name" type="number" class="form-control" name="part" value="{{  $baux->partie_adverse }}" required autocomplete="name" autofocus >                       
+  
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label for="name" >Articles</label>
+                        <hr>
+                        
+                        <div class="form-group col-md-2">
+                            <label for="name" >Articles</label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="name" >Titre</label>
+                        </div> 
+                        <div class="form-group col-md-6">
+                            <label for="name" >Contenu</label>
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="name" >Date debut</label>
-                            <input id="name" type="date" class="form-control" name="date_debut" value="{{ old('date_debut') }}" required autocomplete="date_debut"  >                       
+                            <input id="name" type="date" class="form-control" name="date_debut" value="{{  $baux->date_debut }}" required autocomplete="date_debut"  >                       
                         </div>
                         <div class="form-group col-md-6">
                             <label for="name" >Date Fin</label>
-                            <input id="name" type="date" class="form-control" name="date_fin" value="{{ old('date_fin') }}" required autocomplete="date_fin"  >                       
+                            <input id="name" type="date" class="form-control" name="date_fin" value="{{  $baux->date_fin }}" required autocomplete="date_fin"  >                       
                         </div>
                     </div>
                        
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
-                </form>
+                    <a href="{{route('baux.index')}}" class="btn btn-primary">Retour</a>
+                    <a href="{{route('baux.edit',$baux->id)}}" class="btn btn-warning">Modifier</a>
+                
             </div>
         </div>
     </div>    

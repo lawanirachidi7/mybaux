@@ -41,3 +41,17 @@ File: Main Css File
 .lock{
   background: green;
 }
+
+.tooltip-color{
+  background: white;
+}
+bbe_info_title{
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+
+.bbe_info_title{
+  
+  font-size: medium;
+  font-weight: bold;
+}

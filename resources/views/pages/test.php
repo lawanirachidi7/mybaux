@@ -34,8 +34,6 @@
                 <form class="form-horizontal" action="{{ route('baux.update', $baux->id) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <button type="submit" class="btn btn-primary">Sauvegarder les modifications </button>
-
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="name" >Titre du contrat</label>
@@ -68,7 +66,59 @@
                         </div>
                     </div>
                     {{-- Show old articles --}}
-                    
+                    <div class="form-group row">
+                        @foreach ($articles as $article)
+                          @if ($baux->id == $article->baux_id)
+                            <span>Article N° {{$article->article}} : </span>  {{$article->title}}
+                            <div class="form-group col-md-12">
+                                <label for="name" >Articles</label>
+                                <div class="form-group">
+                                    <div class="row ">
+                                        <div class="col s12">
+                                            <div id="tbltime">
+                                                <div class="form-group row todelet">
+                                                    <form class="form-horizontal" action="{{ route('articles.update', $article->id ) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="form-group col-10">
+                                                            <div class="row">
+                                                                <div class="col-2">
+                                                                    <input id="name" type="text" class="form-control" name="name" value="Article N° {{$article->article}}" placeholder="Numero" required autocomplete="name" autofocus >                       
+                                                                </div> 
+                                                                <div class="col-10">
+                                                                    <input id="name" type="text" class="form-control" name="name" value="{{$article->title}} " placeholder="titre" required autocomplete="name" autofocus >                       
+                                                                </div>
+                                                            </div>
+                                                            <div class="row pt-2 form-group">
+                                                                <div class="col-12">
+                                                                    <textarea  class="summernote" name="" id="" cols="30" rows="10">{{ $article->content  }}</textarea>
+                                                                </div>
+                                                            </div>                    
+                                                        </div>
+                                                        <div class="form-group col-2">
+                                                            {{-- <a data-toggle="modal" id="smallButton1" data-target="#smallModal1" data-attr="{{ route('articles.delete', $article->id) }}" title="supprimer" class="btn btn-danger my-1"><i class="fa fa-trash-alt mr-1" ></i>
+                                                            </a> --}}
+                                                            <a class="btn btn-success">c</a>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                   
+                                </div>
+                            </div>
+                          @else
+                          Aucun acrticle ajouter pour le moment
+                          @endif 
+                        @endforeach
+                    </div> 
+                    <div class="form-group row">
+                        <a data-toggle="modal" id="smallButton" data-target="#exampleModalCenter" data-attr="{{ route('articles.add', $baux->id ) }}" title="ajout" class="btn btn-success my-1">Ajouter un article
+                        </a>
+                    </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="name" >Date debut</label>
@@ -79,71 +129,17 @@
                             <input id="name" type="date" class="form-control" name="date_fin" value="{{ $baux->date_fin }}"  required autocomplete="date_fin"  >                       
                         </div>
                     </div>
+                    <button type="submit" class="btn btn-primary">Modifier </button>
                 </form>
-
-                <div class="form-group row">
-                    @foreach ($articles as $article)
-                      @if ($baux->id == $article->baux_id)
-                        Liste des Articles
-                        <div class="form-group col-md-12">
-                            <label for="name" ></label>
-                            <div class="form-group">
-                                <div class="row ">
-                                    <div class="col s12">
-                                        <div id="tbltime">
-                                            <div class="form-group row todelet">
-                                                <form class="form-horizontal" action="{{ route('articles.update', $article->id ) }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <input id="name" hidden disabled  type="number" class="form-control" name="baux_id" value="{{ $article->baux_id }}" required autocomplete="name" autofocus >                       
-
-                                                    <div class="form-group col-10">
-                                                        <div class="row">
-                                                            <div class="col-2">
-                                                                <input id="name" type="text" class="form-control" name="name" value="Article N° {{$article->article}}" placeholder="Numero" required autocomplete="name" autofocus >                       
-                                                            </div> 
-                                                            <div class="col-10">
-                                                                <input id="name" type="text" class="form-control" name="name" value="{{$article->title}} " placeholder="titre" required autocomplete="name" autofocus >                       
-                                                            </div>
-                                                        </div>
-                                                        <div class="row pt-2 form-group">
-                                                            <div class="col-12">
-                                                                <textarea  class="summernote" name="" id="" cols="30" rows="10">{{ $article->content  }}</textarea>
-                                                            </div>
-                                                        </div>                    
-                                                    </div>
-                                                    <div class="form-group col-2">
-                                                        <a data-toggle="modal" id="smallButton1" data-target="#smallModal1" data-attr="{{ route('articles.delete', $article->id) }}" title="supprimer" class="btn btn-danger my-1"><i class="fa fa-trash-alt mr-1" ></i>
-                                                        </a>
-                                                        <button type="submit" class="btn btn-success">c</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                               
-                            </div>
-                        </div>
-                      @else
-                      Aucun acrticle ajouter pour le moment
-                      @endif 
-                    @endforeach
-                </div> 
-                <div class="form-group row">
-                    <a data-toggle="modal" id="smallButton" data-target="#exampleModalCenter" data-attr="{{ route('articles.add', $baux->id ) }}" title="ajout" class="btn btn-success my-1">Ajouter un article
-                    </a>
-                </div>
             </div>
         </div>
     </div>    
     <!-- end page title -->     
 </div> <!-- end container-fluid -->
 
+
 <!-- small modal -->
-<div class="modal fade" id="smallModal1" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -151,7 +147,26 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" id="smallBody1">
+            <div class="modal-body" id="smallBody">
+                <div>
+                    <!-- the result to be displayed apply here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+<!-- modal -->
+
+<!-- small modal -->
+<div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="smallBody">
                 <div>
                     <!-- the result to be displayed apply here -->
                 </div>
@@ -161,26 +176,6 @@
 </div>
 
 
-
-<!-- small modal -->
-<div class="modal fade" id="smallModal1" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="smallBody1">
-                <div>
-                    <!-- the result to be displayed apply here -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--  modal -->
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -201,9 +196,8 @@
   </div>
 @endsection
 
-
-@section('scripts')  
-<script>
+@section('scripts') 
+{{-- <script>
     // display a modal (small modal)
     $(document).on('click', '#smallButton1', function(event) {
         event.preventDefault();
@@ -215,8 +209,8 @@
             },
             // return the result
             success: function(result) {
-                $('#smallBody1').modal("show");
-                $('#smallBody1').html(result).show();
+                $('#smallModal1').modal("show");
+                $('#smallBody').html(result).show();
             }
             , complete: function() {
                 $('#loader').hide();
@@ -230,7 +224,8 @@
         })
     });
 
-</script>
+</script> --}}
+
 
 <script>
     // display a modal (small modal)
@@ -271,6 +266,7 @@
         });   
     });
 </script>
+
 
     <!-- Summernote js -->
     <script src="{!! asset('assets/libs/summernote/summernote-bs4.min.js') !!}"></script>
