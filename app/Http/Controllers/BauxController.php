@@ -69,7 +69,11 @@ class BauxController extends Controller
      */
     public function show(Baux $baux)
     {
-        return view('pages.baux_show',compact('baux'));
+        $articles=Article::all();
+        $parties = Parties::all();
+        return view('pages.baux_show',compact('baux'))
+            ->with('parties', $parties)
+            ->with('articles', $articles);
     }
 
     /**
@@ -83,7 +87,9 @@ class BauxController extends Controller
         $parties = Parties::all();
         $baobab = Baobab::all();
         $articles = Article::all();
-        return view('pages.baux_edit',compact('baux'))->with('baobab', $baobab )->with('parties', $parties )->with('articles', $articles );
+        return view('pages.baux_edit',compact('baux'))->with('baobab', $baobab )
+            ->with('parties', $parties )
+            ->with('articles', $articles );
     }
 
     /**
@@ -96,7 +102,7 @@ class BauxController extends Controller
     public function update(Request $request, Baux $baux)
     { $validator = Validator::make($request->all(), [
         'titre_contract' => 'required',
-        'numero_contract' => 'required',
+        // 'numero_contract' => 'required',
         // 'partie_prenante' => 'required',
         // 'partie_adverse' => 'required',
         // 'date_debut ' => 'required',

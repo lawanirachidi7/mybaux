@@ -93,15 +93,14 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         $validator = Validator::make($request->all(), [
-            'article' => ['required', 'string', 'max:255'],
-            'title' => ['required', 'string', 'max:255'],
+            // 'article' => ['required', 'string', 'max:255'],
+            // 'title' => ['required', 'string', 'max:255'],
             'content' => ['required', ],
             'baux_id' => ['required', 'integer']
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput()->with('error','Formulaire invalide! Merci de bien remplir les champs');
         }else{
-            dd("yes");
             $article->update($request->all()) ;       
             return redirect()->back()
                 ->with('success','Article mise à jour avec succès.');

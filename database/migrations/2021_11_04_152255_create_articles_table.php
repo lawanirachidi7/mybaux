@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->string('article');
             $table->string('title');
-            $table->string('content');
+            $table->string('content', 255);
             $table->timestamps();
             $table->bigInteger('baux_id')-> unsigned()-> index();;
             $table->foreign('baux_id')->references('id')->on('bauxes')->onDelete('cascade');

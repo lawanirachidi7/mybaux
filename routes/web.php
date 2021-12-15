@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BaobabController;
 use App\Http\Controllers\UserController;
@@ -23,10 +22,8 @@ Route::get('/', function () { return view('auth.login');});
 Route::get('/lock', [App\Http\Controllers\HomeController::class, 'lock'])->name('lock');
 Route::get('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');
 Auth::routes();
-
-
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\BauxController::class, 'index'])->name('baux');
     Route::get('/baux/ajout', [App\Http\Controllers\BauxController::class, 'add'])->name('baux/ajout');
     Route::get('/baux', [App\Http\Controllers\BauxController::class, 'index'])->name('baux');
     Route::get('/privileges', [App\Http\Controllers\PrivilegeController::class, 'index'])->name('privileges');

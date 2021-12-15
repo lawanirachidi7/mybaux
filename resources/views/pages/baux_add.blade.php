@@ -54,18 +54,18 @@
                             <label for="name" >Partie Prenante</label>
                             <select id="inputState" class="form-control " name="partie_prenante" value="{{ old('partie_prenante') }}" required autocomplete="privilege">
                                 @foreach ($baobab as $baobab)
-                                    <option value="{{ $baobab->id }}">{{ $baobab->raison_social}}</option>
+                                    <option value="{{ $baobab->raison_social }}">{{ $baobab->raison_social}}</option>
                                 @endforeach 
-                                @foreach ($parties as $partie)
-                                    <option value="{{ $partie->id}}">{{ $partie->raison_social}}</option>
-                                @endforeach  
+                                {{-- @foreach ($parties as $partie)
+                                    <option value="{{ $partie->raison_social}}">{{ $partie->raison_social}}</option>
+                                @endforeach   --}}
                             </select>      
                         </div>
                         <div class="form-group col-md-6">
                             <label for="name" >Partie adverse</label>
                             <select id="inputState" class="form-control " name="partie_adverse" value="{{ old('partie_adverse') }}" required autocomplete="privilege">
                                 @foreach ($parties as $partie)
-                                    <option value="{{ $partie->id}}">{{ $partie->raison_social}}</option>
+                                    <option value="{{ $partie->raison_social}}">{{ $partie->raison_social}}</option>
                                 @endforeach  
                             </select>     
                         </div>
@@ -102,12 +102,9 @@
         });   
     });
 </script>
-
     <!-- Summernote js -->
     <script src="{!! asset('assets/libs/summernote/summernote-bs4.min.js') !!}"></script>
 
-
     <!-- Init js -->
     <script src="{!! asset('assets/js/pages/form-summernote.init.js') !!}"></script>
-
 @endsection

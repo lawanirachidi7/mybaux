@@ -20,7 +20,7 @@ class Baux extends Model
         'statut',
         'commentaire',
     ];
-
+    
     public function articles()
     {
         return $this->hasMany(Article::class);

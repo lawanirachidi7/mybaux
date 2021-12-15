@@ -34,7 +34,7 @@
                 <form class="form-horizontal" action="{{ route('baux.update', $baux->id) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <button type="submit" class="btn btn-primary">Sauvegarder les modifications </button>
+                    <button type="submit" class="btn btn-primary mb-5">Sauvegarder les modifications </button>
 
                     <div class="form-group row">
                         <div class="form-group col-md-6">
@@ -51,18 +51,23 @@
                             <label for="name" >Partie Prenante</label>
                             <select id="inputState" class="form-control " name="partie_prenante" value="{{ $baux->partie_prenante }}"  required autocomplete="privilege">
                                 @foreach ($baobab as $baobab)
-                                    <option value="{{ $baobab->id }}">{{ $baobab->raison_social}}</option>
+                                    <option value="{{ $baobab->raison_social }}">{{ $baobab->raison_social}}</option>
                                 @endforeach 
-                                @foreach ($parties as $partie)
+                                {{-- @foreach ($parties as $partie)
                                     <option value="{{ $partie->id}}">{{ $partie->raison_social}}</option>
-                                @endforeach  
+                                @endforeach   --}}
                             </select>      
                         </div>
                         <div class="form-group col-md-6">
                             <label for="name" >Partie adverse</label>
-                            <select id="inputState" class="form-control " name="partie_adverse" value="{{ $baux->partie_adverse }}"  required autocomplete="privilege">
+                            <select id="inputState" class="form-control " name="partie_adverse"  required autocomplete="">
                                 @foreach ($parties as $partie)
-                                    <option value="{{ $partie->id}}">{{ $partie->raison_social}}</option>
+                                    @if ($partie->raison_social==$baux->partie_adverse)
+                                        <option checked  value="{{ $partie->raison_social }}">{{ $partie->raison_social}}</option>
+                                    @else
+                                        <option value="{{ $partie->raison_social }}">{{ $partie->raison_social}}</option>
+                                    @endif
+                                    
                                 @endforeach  
                             </select>     
                         </div>
@@ -95,40 +100,35 @@
                                                 <form class="form-horizontal" action="{{ route('articles.update', $article->id ) }}" method="POST">
                                                     @csrf
                                                     @method('PUT')
-                                                    <input id="name" hidden disabled  type="number" class="form-control" name="baux_id" value="{{ $article->baux_id }}" required autocomplete="name" autofocus >                       
+                                                    <input id="name" hidden  type="number" class="form-control" name="baux_id" value="{{ $article->baux_id }}" required autocomplete="name" autofocus >                       
 
                                                     <div class="form-group col-10">
                                                         <div class="row">
                                                             <div class="col-2">
-                                                                <input id="name" type="text" class="form-control" name="name" value="Article N° {{$article->article}}" placeholder="Numero" required autocomplete="name" autofocus >                       
+                                                                <input id="name" type="text" class="form-control" name="article" value="Article N° {{$article->article}}" placeholder="Numero" required autocomplete="name" autofocus >                       
                                                             </div> 
                                                             <div class="col-10">
-                                                                <input id="name" type="text" class="form-control" name="name" value="{{$article->title}} " placeholder="titre" required autocomplete="name" autofocus >                       
+                                                                <input id="name" type="text" class="form-control" name="title" value="{{$article->title}} " placeholder="titre" required autocomplete="name" autofocus >                       
                                                             </div>
                                                         </div>
-                                                        <div class="row pt-2 form-group">
-                                                            <div class="col-12">
-                                                                <textarea  class="summernote" name="" id="" cols="30" rows="10">{{ $article->content  }}</textarea>
-                                                            </div>
-                                                        </div>                    
+                                                        <div class="col-12">
+                                                            <textarea  class="summernote" name="content" id="" cols="30" rows="100">{{ $article->content  }}</textarea>
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-2">
                                                         <a data-toggle="modal" id="smallButton1" data-target="#smallModal1" data-attr="{{ route('articles.delete', $article->id) }}" title="supprimer" class="btn btn-danger my-1"><i class="fa fa-trash-alt mr-1" ></i>
                                                         </a>
-                                                        <button type="submit" class="btn btn-success">c</button>
+                                                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>
+                                                        </button>
                                                     </div>
                                                 </form>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-                                
-                               
                             </div>
                         </div>
-                      @else
-                      Aucun acrticle ajouter pour le moment
+  
                       @endif 
                     @endforeach
                 </div> 
@@ -139,7 +139,7 @@
             </div>
         </div>
     </div>    
-    <!-- end page title -->     
+        <!-- end page title -->     
 </div> <!-- end container-fluid -->
 
 <!-- small modal -->
@@ -181,7 +181,6 @@
 </div>
 
 <!--  modal -->
-
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -200,8 +199,6 @@
     </div>
   </div>
 @endsection
-
-
 @section('scripts')  
 <script>
     // display a modal (small modal)
