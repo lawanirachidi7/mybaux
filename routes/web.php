@@ -18,7 +18,7 @@ use App\Http\Controllers\ArticleController;
 |
 */
 
-Route::get('/', function () { return view('auth.login');});
+Route::get('/home', function () { return view('auth.login');});
 Route::get('/lock', [App\Http\Controllers\HomeController::class, 'lock'])->name('lock');
 Route::get('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');
 Auth::routes();
